@@ -1,30 +1,133 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Login</title>
+    <meta charset="UTF-8">
+    <title>Login | EldoVibe</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #f9f9fb, #ecf0f1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2em;
+            color: #2c3e50;
+        }
+
+        .login-wrapper {
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 420px;
+        }
+
+        form p {
+            margin-bottom: 15px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1.8px solid #ddd;
+            border-radius: 6px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #e74c3c;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            background-color: #e74c3c;
+            color: white;
+            padding: 12px;
+            font-size: 1em;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #c0392b;
+        }
+
+        .links {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .links a {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 0.95em;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        .logout-form {
+            display: inline;
+        }
+
+        .welcome-msg {
+            font-size: 0.95em;
+            color: #555;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Login</h1>
-        {% if user.is_authenticated %}
-            <p>Welcome, {{ user.username }} | 
-                <form method="post" action="{% url 'logout' %}" style="display: inline;">
-                    {% csrf_token %}
-                    <button type="submit" style="background: none; border: none; color: #0066cc; cursor: pointer; text-decoration: underline;">Logout</button>
-                </form>
-            </p>
-        {% else %}
-            <p>Already logged in? <a href="{% url 'escort_list' %}">Home</a></p>
-        {% endif %}
-    </header>
+
+<header>
+    <h1>Login to EldoVibe</h1>
+    {% if user.is_authenticated %}
+        <div class="welcome-msg">
+            Welcome, {{ user.username }} |
+            <form method="post" action="{% url 'logout' %}" class="logout-form">
+                {% csrf_token %}
+                <button type="submit" style="background: none; color: #e74c3c; border: none; text-decoration: underline; cursor: pointer;">Logout</button>
+            </form>
+        </div>
+    {% else %}
+        <p class="welcome-msg">Already logged in? <a href="{% url 'escort_list' %}">Go to Home</a></p>
+    {% endif %}
+</header>
+
+<div class="login-wrapper">
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Login</button>
     </form>
-    <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
-    <p><a href="{% url 'password_reset' %}">Forgot Password?</a></p>
+
+    <div class="links">
+        <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+        <p><a href="{% url 'password_reset' %}">Forgot Password?</a></p>
+    </div>
+</div>
+
 </body>
 </html>
