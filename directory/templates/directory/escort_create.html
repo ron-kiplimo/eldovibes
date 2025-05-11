@@ -4,6 +4,159 @@
     <title>Create Escort</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>/* ----------  Create Escort Page  ---------- */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #f9f9fb, #ecf0f1);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    width: 100%;
+    background-color: #2c3e50;
+    color: #fff;
+    text-align: center;
+    padding: 20px 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+header p, header a {
+    color: #ecf0f1;
+    font-size: 0.95em;
+}
+
+header a:hover {
+    color: #e74c3c;
+}
+
+/* Quick-links under header */
+.footer-section {
+    margin-top: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+
+.footer-section li {
+    display: inline;
+}
+
+.footer-section a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+    color: #e74c3c;
+}
+
+/* Wrapper around form */
+.form-wrapper {
+    background: #fff;
+    padding: 35px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    width: 100%;
+    max-width: 550px;
+    margin: 40px 20px;
+}
+
+/* Messages */
+.message {
+    border-radius: 6px;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    font-size: 0.95em;
+}
+.message.success { background: #2ecc71; color: #fff; }
+.message.error   { background: #e74c3c; color: #fff; }
+
+/* Django default form <p> wrappers */
+form p {
+    margin-bottom: 18px;
+}
+
+/* Inputs / selects / textareas */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="file"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.8px solid #ddd;
+    border-radius: 6px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #e74c3c;
+    outline: none;
+}
+
+/* Primary button */
+button[type="submit"] {
+    background-color: #e74c3c;
+    color: #fff;
+    width: 100%;
+    padding: 12px;
+    font-size: 1em;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 5px;
+}
+
+button[type="submit"]:hover {
+    background-color: #c0392b;
+}
+
+/* Back-to-list link */
+.back-link {
+    display: inline-block;
+    margin: 20px 0;
+    color: #3498db;
+    text-decoration: none;
+    font-size: 0.95em;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+    .form-wrapper {
+        padding: 25px 25px;
+    }
+}
+</style>
 </head>
 <body>
     <header>
